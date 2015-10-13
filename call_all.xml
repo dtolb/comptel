@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+	<SpeakSentence gender="male" locale="en_US" voice="paul">Thank you for calling Tom's Tire Shop</SpeakSentence>
+	<Transfer transferCallerId="+14153220022">
+		<PhoneNumber>sip:ringto_user_1022434@prod.ringto.bwapp.bwsip.io</PhoneNumber>
+		<PhoneNumber>+19196721980</PhoneNumber>
+	</Transfer>
+</Response>
