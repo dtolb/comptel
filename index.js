@@ -78,6 +78,9 @@ app.get('/incomingCall', function(req, res) {
 
 io.on('connection', function(socket){
 	socket.emit('connected', 'Connected!');
+	io.emit('numCalls1', cdr.tn1.numCalls);
+	io.emit('numCalls2', cdr.tn2.numCalls);
+	io.emit('numCalls3', cdr.tn3.numCalls);
 });
 
 http.listen(3000, function(){
