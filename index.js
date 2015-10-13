@@ -24,7 +24,7 @@ var speakSentence = new xml.SpeakSentence({sentence: "Thank you for calling Tom'
 response.push(speakSentence);
 // Create the xml to send
 var bxml = response.toXml();
-
+console.log(bxml);
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static('static'));
 app.get('/', function(req, res){
@@ -34,7 +34,7 @@ app.get('/', function(req, res){
 //three sets of each number
 app.get('/incomingCall', function(req, res) {
 	if(req.query && req.query.eventType && req.query.eventType === 'answer') {
-		res.send(bxml);
+		console.log(req.query);
 		if(req.query.to === tns.tn1) {
 			cdr.tn1.numCalls += 1;
 			io.emit('numCalls1', cdr.tn1.numCalls);
@@ -53,6 +53,7 @@ app.get('/incomingCall', function(req, res) {
 			cdr.tn3.callStart = new Date();
 			io.emit('caller3', req.query.from);
 		}
+		res.send(bxml);
 	}
 	else if(req.query && req.query.eventType && req.query.eventType === 'hangup'){
 		if(req.query.to === tns.tn1) {
