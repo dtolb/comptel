@@ -24,7 +24,7 @@ var speakSentence = new xml.SpeakSentence({sentence: "Thank you for calling Tom'
 response.push(speakSentence);
 // Create the xml to send
 var bxml = response.toXml();
-console.log(bxml);
+
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static('static'));
 app.get('/', function(req, res){
@@ -80,9 +80,9 @@ app.get('/incomingCall', function(req, res) {
 
 io.on('connection', function(socket){
 	socket.emit('connected', 'Connected!');
-	io.emit('numCalls1', cdr.tn1.numCalls);
+/*	io.emit('numCalls1', cdr.tn1.numCalls);
 	io.emit('numCalls2', cdr.tn2.numCalls);
-	io.emit('numCalls3', cdr.tn3.numCalls);
+	io.emit('numCalls3', cdr.tn3.numCalls);*/
 });
 
 http.listen(app.get('port'), function(){
