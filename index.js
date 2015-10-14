@@ -34,9 +34,7 @@ app.get('/', function(req, res){
 //three sets of each number
 app.get('/incomingCall', function(req, res) {
 	if(req.query && req.query.eventType && req.query.eventType === 'answer') {
-		console.log(req.query);
 		if(req.query.to === tns.tn1) {
-			console.log('Incoming to tn1');
 			cdr.tn1.numCalls += 1;
 			io.emit('numCalls1', cdr.tn1.numCalls);
 			cdr.tn1.callStart = new Date();
