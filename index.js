@@ -36,6 +36,7 @@ app.get('/incomingCall', function(req, res) {
 	if(req.query && req.query.eventType && req.query.eventType === 'answer') {
 		console.log(req.query);
 		if(req.query.to === tns.tn1) {
+			console.log('Incoming to tn1');
 			cdr.tn1.numCalls += 1;
 			io.emit('numCalls1', cdr.tn1.numCalls);
 			cdr.tn1.callStart = new Date();
@@ -80,9 +81,9 @@ app.get('/incomingCall', function(req, res) {
 
 io.on('connection', function(socket){
 	socket.emit('connected', 'Connected!');
-/*	io.emit('numCalls1', cdr.tn1.numCalls);
+	io.emit('numCalls1', cdr.tn1.numCalls);
 	io.emit('numCalls2', cdr.tn2.numCalls);
-	io.emit('numCalls3', cdr.tn3.numCalls);*/
+	io.emit('numCalls3', cdr.tn3.numCalls);
 });
 
 http.listen(app.get('port'), function(){
