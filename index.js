@@ -71,6 +71,7 @@ app.get('/incomingCall', function(req, res) {
 			cdr.tn3.duration = (cdr.tn3.callEnd - cdr.tn3.callStart) / 1000;
 			io.emit('duration3', cdr.tn3.duration);
 		}
+		res.send({status: 200});
 	}
 	else {
 		res.send({status: 200});
